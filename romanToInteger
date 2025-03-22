@@ -1,0 +1,34 @@
+
+int romanToInt(char* s) {
+    char *romanNumber = s;
+    int sum = 0;
+    int temp_Val = 0;
+    int next_val = 0;
+    char roman[7]={'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+    int val[7]={1,5,10,50,100,500,1000};
+
+    for(int i = 0; i < strlen(s) - 1; i++){
+        for (int j = 0; j < 7; j++){
+            if (roman[j] == s[i]){
+                temp_Val = val[j];
+            }
+        }
+        for (int j = 0; j < 7; j++){
+            if (roman[j] == s[i+1]){
+                next_val = val[j];
+            }
+        }
+        if (temp_Val < next_val){
+            sum -= temp_Val;
+        }
+        else sum += temp_Val;
+    }
+    int last_Val = 0;
+    for (int i = 0; i < 7; i++){
+        if (roman[i] == s[strlen(s) - 1]){
+            last_Val = val[i];
+        }
+    }
+
+    return sum + last_Val;
+}
