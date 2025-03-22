@@ -1,0 +1,22 @@
+bool isPalindrome(int x) {
+    char number[12];
+    sprintf(number, "%d", x);
+    int tam = strlen(number);
+    int palindromo = 1;
+
+    int init = 0;
+    int final = tam - 1;
+
+    while(palindromo == 1 && init < final){
+        if(number[init] == number[final]){
+            init++;
+            final--;
+        }
+        else palindromo = 0;
+    }
+    
+    if (palindromo == 1){
+        return true;
+    }
+    else return false;
+}
